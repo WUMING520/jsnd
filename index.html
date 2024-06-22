@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>支付宝充值话费</title>
+    <script>
+        async function recharge() {
+            const response = await fetch('https://your-server-endpoint/api/recharge', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    outTradeNo: '2024062200001',
+                    totalAmount: '88.88',
+                    subject: '手机充值',
+                    phoneNumber: '17725961529'
+                })
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                alert('充值成功');
+            } else {
+                alert('充值失败: ' + data.message);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>充值话费</h1>
+    <button onclick="recharge()">充值话费</button>
+</body>
+</html>
